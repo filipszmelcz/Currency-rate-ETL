@@ -23,6 +23,3 @@ def load_currency_history(start_date: str, end_date: str):
         info = get_currency(currency, date)
         start += delta
         return info
-        
-
-load_currency_history("2024-03-01", "2024-03-05")
