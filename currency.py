@@ -14,7 +14,7 @@ def get_currency(currency, date = "latest"):
     data = response.json()
     return data
 
-def load_currency_history(start_date: str, end_date: str, currency: list[str]):
+def load_currency_history(start_date: str, end_date: str):
     start = datetime.strptime(start_date, "%Y-%m-%d")
     end = datetime.strptime(end_date, "%Y-%m-%d")
     delta = timedelta(days=1)
@@ -22,6 +22,7 @@ def load_currency_history(start_date: str, end_date: str, currency: list[str]):
         date = start.strftime("%Y-%m-%d")
         info = get_currency(currency, date)
         start += delta
-        print(f"Base: {info.get('base')}, date: {info.get('date')} rates: {info.get('rates')}")
+        return info
+        
 
-load_currency_history("2024-03-01", "2024-03-05", currency)
+load_currency_history("2024-03-01", "2024-03-05")
