@@ -3,18 +3,17 @@ import csv
 
 base_url = "https://pokeapi.co/api/v2/"
 
-def load_pokemon_info():
-            url = f"{base_url}/pokemon?limit=10"
-            response = requests.get(url)
+def load_pokemon_to_csv():
+    url = f"{base_url}/pokemon?limit=10000"
+    response = requests.get(url)
+    if response.status_code == 200:
+        info = response.json()
+        print("Data transfer complete")
+        return info
+    else:
+        print(f"Wrong data")
 
-            if response.status_code == 200:
-                info = response.json()
-                print("Data transfer complete")
-                return info
-            else:
-                print(f"Wrong data")
-
-pokemon_data = load_pokemon_info()
+pokemon_data = load_pokemon_to_csv()
 if pokemon_data:
     print(pokemon_data["results"])
     pokemon_data_results = pokemon_data["results"]
