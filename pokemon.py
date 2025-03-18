@@ -13,11 +13,11 @@ def load_pokemon_to_csv():
     else:
         print(f"Wrong data")
 
-pokemon_data = load_pokemon_to_csv()
-if pokemon_data:
-    print(pokemon_data["results"])
-    pokemon_data_results = pokemon_data["results"]
-    with open("load_pokemon_info.csv", "w", newline="") as f:
-        w = csv.DictWriter(f, pokemon_data_results[0].keys())
-        w.writeheader()
-        w.writerows(pokemon_data_results)
+    pokemon_data = load_pokemon_to_csv()
+    if pokemon_data:
+        print(pokemon_data["results"])
+        pokemon_data_results = pokemon_data["results"]
+        with open("load_pokemon_info.csv", "w", newline="") as f:
+            w = csv.DictWriter(f, pokemon_data_results[0].keys())
+            w.writeheader()
+            w.writerows(pokemon_data_results)
